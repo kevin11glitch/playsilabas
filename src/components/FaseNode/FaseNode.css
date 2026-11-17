@@ -1,0 +1,84 @@
+.fase-node-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 2;
+}
+
+/* Zigue-zague idêntico ao seu design original */
+.fase-pos-1,
+.fase-pos-3,
+.fase-pos-5 {
+  margin-top: 75px;
+}
+
+.fase-pos-2,
+.fase-pos-4 {
+  margin-top: 0px;
+}
+
+.fase-circulo {
+  align-items: center;
+  border: none;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  height: 104px;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 104px;
+}
+
+/* Estado 1: Concluída */
+.fase-circulo.concluida {
+  background-color: var(--textoverde-petrleo-escuro);
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Estado 2: Ativa (Destaque maior) */
+.fase-circulo.ativa {
+  background-color: var(--paletaamarelo-manteigamdio);
+  box-shadow: 0px 6px 12px rgba(51, 76, 63, 0.15);
+  color: var(--textoverde-petrleo-escuro);
+  cursor: pointer;
+  height: 128px;
+  width: 128px;
+}
+
+.fase-circulo.concluida:hover,
+.fase-circulo.ativa:hover {
+  transform: scale(1.06);
+}
+
+/* Estado 3: Bloqueada */
+.fase-circulo.bloqueada {
+  background-color: var(--paletacinza-quenteclaro);
+  color: var(--textoverde-petrleo-escuro);
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.fase-numero {
+  font-size: 42px;
+  line-height: 1;
+}
+
+.fase-circulo.ativa .fase-numero {
+  font-size: 48px;
+}
+
+.fase-badge-jogar {
+  font-size: 20px;
+  margin-top: 4px;
+}
+
+.fase-legenda {
+  color: var(--textoverde-petrleo-escuro);
+  font-size: 21px;
+  font-weight: 800;
+  text-align: center;
+}

@@ -1,0 +1,25 @@
+:root {
+  --paletaamarelo-manteigaclaro: rgba(245, 232, 201, 1);
+  --paletaamarelo-manteigaescuro: rgba(193, 172, 104, 1);
+  --paletaamarelo-manteigamdio: rgba(229, 210, 138, 1);
+  --paletaazul-nvoaclaro: rgba(220, 233, 241, 1);
+  --paletaazul-nvoaescuro: rgba(119, 153, 170, 1);
+  --paletaazul-nvoamdio: rgba(157, 183, 196, 1);
+  --paletacinza-quenteclaro: rgba(232, 227, 218, 1);
+  --paletacinza-quenteescuro: rgba(162, 155, 145, 1);
+  --paletacinza-quentemdio: rgba(201, 195, 186, 1);
+  --paletacremeescuro: rgba(229, 221, 208, 1);
+  --paletacrememdio: rgba(246, 241, 232, 1);
+  --paletalavandaclaro: rgba(233, 223, 240, 1);
+  --paletalavandaescuro: rgba(146, 135, 173, 1);
+  --paletalavandamdio: rgba(183, 174, 207, 1);
+  --paletapssegoclaro: rgba(243, 222, 213, 1);
+  --paletapssegoescuro: rgba(184, 141, 121, 1);
+  --paletapssegomdio: rgba(217, 178, 156, 1);
+  --paletaverde-slviaclaro: rgba(220, 231, 224, 1);
+  --paletaverde-slviaescuro: rgba(111, 143, 128, 1);
+  --paletaverde-slviamdio: rgba(143, 175, 159, 1);
+  --textocinza-esverdeado-escuro: rgba(90, 104, 98, 1);
+  --textoverde-acinzentado: rgba(111, 134, 124, 1);
+  --textoverde-petrleo-escuro: rgba(53, 75, 69, 1);
+}

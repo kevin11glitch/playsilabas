@@ -1,0 +1,50 @@
+.balao-mascote-btn {
+  align-items: center;
+  border: none;
+  border-radius: 32px;
+  box-shadow: 0px 4px 10px rgba(30, 56, 45, 0.13);
+  cursor: pointer;
+  display: inline-flex;
+  gap: 22px;
+  min-height: 84px;
+  padding: 20px 28px;
+  text-align: left;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.balao-mascote-btn:hover {
+  box-shadow: 0px 6px 14px rgba(30, 56, 45, 0.18);
+  transform: translateY(-2px);
+}
+
+.balao-mascote-btn:active {
+  transform: scale(0.98);
+}
+
+/* Variantes de cor da paleta Calm Design */
+.balao-mascote-btn.padrao {
+  background-color: var(--paletaamarelo-manteigamdio);
+}
+
+.balao-mascote-btn.dica {
+  background-color: var(--paletapssegoclaro);
+}
+
+.balao-mascote-btn.sucesso {
+  background-color: var(--paletaverde-slviaclaro);
+}
+
+.balao-mascote-icone {
+  flex-shrink: 0;
+  height: 32px;
+  width: 32px;
+}
+
+.balao-mascote-texto {
+  color: var(--textoverde-petrleo-escuro);
+  font-family: "Nunito", sans-serif;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0;
+}

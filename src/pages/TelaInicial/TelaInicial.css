@@ -1,0 +1,223 @@
+.element-INCIO-playslabas {
+  background-color: var(--paletacrememdio);
+  margin: 0 auto;         /* Centraliza o contêiner na tela */
+  max-width: 1120px;      /* Controla a distância entre a esquerda e a direita (diminua para 1040px se quiser ainda mais juntos) */
+  min-height: 100vh;
+  position: relative;
+  width: 100%;
+}
+
+.element-INCIO-playslabas .logo-playsilabas {
+  align-items: center;
+  display: inline-flex;
+  gap: 6px;
+  left: 54px;
+  position: absolute;
+  top: 45px;
+}
+
+.element-INCIO-playslabas .group {
+  height: 44px;
+  position: relative;
+  width: 44px;
+}
+
+.element-INCIO-playslabas .smbolo-de-formas {
+  background-color: #116553;
+  border-radius: 15px;
+  display: flex;
+  gap: 3px;
+  height: 44px;
+  width: 44px;
+}
+
+.element-INCIO-playslabas .ellipse {
+  background-color: #f8cd58;
+  border-radius: 6.5px;
+  height: 13px;
+  margin-left: 7px;
+  margin-top: 8px;
+  width: 13px;
+}
+
+.element-INCIO-playslabas .quadrado {
+  background-color: #f8bba5;
+  border-radius: 3px;
+  height: 13px;
+  margin-top: 22px;
+  width: 13px;
+}
+
+.element-INCIO-playslabas .frame {
+  align-items: center;
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: 10px;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+}
+
+.element-INCIO-playslabas .marca {
+  color: var(--textoverde-petrleo-escuro);
+  font-family: "Nunito-ExtraBold", Helvetica;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 28.7px;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.element-INCIO-playslabas .fundo-mascote {
+  background-color: var(--paletaverde-slviaclaro);
+  border-radius: 96px;
+  display: flex;
+  height: 460px;
+  right: 54px; /* Ancora a 54px da direita, simétrico à esquerda */
+  overflow: hidden;
+  position: absolute;
+  top: 152px;
+  width: 424px;
+}
+
+.element-INCIO-playslabas .div {
+  background-color: var(--paletaamarelo-manteigamdio);
+  border-radius: 165px;
+  height: 330px;
+  margin-left: 46px;
+  margin-top: 44px;
+  width: 330px;
+}
+
+.element-INCIO-playslabas .mascote {
+  height: 386px;
+  right: 73px; /* Centralizado dentro do fundo-mascote (54px + 19px de margem) */
+  position: absolute;
+  top: 205px;
+  width: 386px;
+}
+
+.element-INCIO-playslabas .titulo-pag-inicial {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  left: 54px;
+  padding: 10px;
+  position: absolute;
+  top: 216px;
+}
+
+.element-INCIO-playslabas .t-tulo-do-jogo {
+  color: var(--textoverde-petrleo-escuro);
+  font-family: "Nunito-ExtraBold", Helvetica;
+  font-size: 51px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 58.6px;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.element-INCIO-playslabas .desc-pag-inicial {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  left: 54px;
+  padding: 10px;
+  position: absolute;
+  top: 308px;
+}
+
+.element-INCIO-playslabas .convite {
+  color: var(--textoverde-petrleo-escuro);
+  font-family: "Nunito-ExtraBold", Helvetica;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 41.4px;
+  margin-top: -1px;
+  position: relative;
+  width: fit-content;
+}
+
+.element-INCIO-playslabas .botao-jogar {
+  align-items: center;
+  background-color: var(--textoverde-petrleo-escuro);
+  border-radius: 28px;
+  box-shadow: 0px 6px 12px #1e382d29;
+  display: inline-flex;
+  gap: 10px;
+  left: 54px;
+  overflow: hidden;
+  padding: 23px 0px;
+  position: absolute;
+  top: 478px;
+}
+
+.element-INCIO-playslabas .text-wrapper {
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+  font-family: "Nunito-ExtraBold", Helvetica;
+  font-size: 34px;
+  font-weight: 800;
+  height: 50px;
+  justify-content: center;
+  letter-spacing: 0;
+  line-height: 39.1px;
+  margin-top: -1px;
+  position: relative;
+  text-align: center;
+  width: 372px;
+}
+
+.element-INCIO-playslabas .image {
+  height: 30px;
+  left: 86px;
+  position: absolute;
+  top: 32px;
+  width: 24px;
+}
+
+.element-INCIO-playslabas .lema-wrapper {
+  align-items: center;
+  display: inline-flex;
+  gap: 10px;
+  justify-content: center;
+  left: 54px;
+  padding: 10px;
+  position: absolute;
+  top: 666px;
+}
+
+.element-INCIO-playslabas .lema {
+  color: var(--textoverde-petrleo-escuro);
+  font-family: "Nunito-ExtraBold", Helvetica;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 25.3px;
+  margin-top: -1px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: var(--paletacrememdio);
+  overflow-x: hidden;
+}
