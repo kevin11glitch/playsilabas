@@ -1,7 +1,8 @@
 .element-MAPA-FASES {
   background-color: var(--paletacrememdio);
-  min-height: 768px;
-  min-width: 1024px;
+  margin: 0 auto;
+  max-width: 1024px;
+  min-height: 860px;
   position: relative;
   width: 100%;
 }
@@ -87,335 +88,6 @@
   width: fit-content;
 }
 
-.element-MAPA-FASES .campo-da-trilha {
-  background-color: var(--paletaverde-slviaclaro);
-  border-radius: 48px;
-  height: 302px;
-  left: 43px;
-  position: absolute;
-  top: 239px;
-  width: 928px;
-}
-
-.element-MAPA-FASES .trilha-curta {
-  height: 75px;
-  left: 142px;
-  position: absolute;
-  top: 322px;
-  width: 185px;
-}
-
-.element-MAPA-FASES .img {
-  height: 75px;
-  left: 329px;
-  position: absolute;
-  top: 322px;
-  width: 185px;
-}
-
-.element-MAPA-FASES .trilha-curta-2 {
-  height: 75px;
-  left: 510px;
-  position: absolute;
-  top: 322px;
-  width: 185px;
-}
-
-.element-MAPA-FASES .trilha-curta-3 {
-  height: 75px;
-  left: 697px;
-  position: absolute;
-  top: 322px;
-  width: 185px;
-}
-
-.element-MAPA-FASES .FASE {
-  align-items: center;
-  background-color: var(--textoverde-petrleo-escuro);
-  border-radius: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 104px;
-  justify-content: center;
-  left: 92px;
-  overflow: hidden;
-  padding: 23px 0px;
-  position: absolute;
-  top: 346px;
-  width: 104px;
-}
-
-.element-MAPA-FASES .text-wrapper-2 {
-  align-items: center;
-  align-self: stretch;
-  color: #ffffff;
-  display: flex;
-  font-family: "Nunito-ExtraBold", Helvetica;
-  font-size: 42px;
-  font-weight: 800;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: 48.3px;
-  position: relative;
-  text-align: center;
-}
-
-.element-MAPA-FASES .frame-2 {
-  align-items: center;
-  display: inline-flex;
-  gap: 10px;
-  justify-content: center;
-  left: 102px;
-  padding: 10px;
-  position: absolute;
-  top: 456px;
-}
-
-.element-MAPA-FASES .text-wrapper-3 {
-  color: var(--textoverde-petrleo-escuro);
-  font-family: "Nunito-ExtraBold", Helvetica;
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 24.1px;
-  margin-top: -1px;
-  position: relative;
-  text-align: center;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.element-MAPA-FASES .FASE-ATIVA {
-  align-items: flex-start;
-  background-color: var(--paletaamarelo-manteigamdio);
-  border-radius: 40px;
-  box-shadow: 0px 6px 12px #334c3f26;
-  display: flex;
-  flex-direction: column;
-  gap: 13px;
-  height: 132px;
-  left: 262px;
-  overflow: hidden;
-  padding: 10px 0px;
-  position: absolute;
-  top: 265px;
-  width: 132px;
-}
-
-.element-MAPA-FASES .text-wrapper-4 {
-  align-items: center;
-  align-self: stretch;
-  color: var(--textoverde-petrleo-escuro);
-  display: flex;
-  font-family: "Nunito-ExtraBold", Helvetica;
-  font-size: 48px;
-  font-weight: 800;
-  height: 55px;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: 55.2px;
-  margin-top: -1px;
-  position: relative;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.element-MAPA-FASES .text-wrapper-5 {
-  align-items: center;
-  align-self: stretch;
-  color: var(--textoverde-petrleo-escuro);
-  display: flex;
-  font-family: "Nunito-ExtraBold", Helvetica;
-  font-size: 21px;
-  font-weight: 800;
-  height: 30px;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: 24.1px;
-  position: relative;
-  text-align: center;
-}
-
-.element-MAPA-FASES .frame-3 {
-  align-items: center;
-  display: inline-flex;
-  gap: 10px;
-  justify-content: center;
-  left: 272px;
-  padding: 10px;
-  position: absolute;
-  top: 403px;
-}
-
-.element-MAPA-FASES .FASE-2 {
-  align-items: center;
-  background-color: var(--paletacinza-quenteclaro);
-  border-radius: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 104px;
-  justify-content: center;
-  left: 460px;
-  overflow: hidden;
-  padding: 23px 0px;
-  position: absolute;
-  top: 346px;
-  width: 104px;
-}
-
-.element-MAPA-FASES .text-wrapper-6 {
-  align-items: center;
-  align-self: stretch;
-  color: var(--textoverde-petrleo-escuro);
-  display: flex;
-  font-family: "Nunito-ExtraBold", Helvetica;
-  font-size: 42px;
-  font-weight: 800;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: 48.3px;
-  position: relative;
-  text-align: center;
-}
-
-.element-MAPA-FASES .frame-4 {
-  align-items: center;
-  display: inline-flex;
-  gap: 10px;
-  justify-content: center;
-  left: 466px;
-  padding: 10px;
-  position: absolute;
-  top: 456px;
-}
-
-.element-MAPA-FASES .text-wrapper-7 {
-  align-items: center;
-  color: var(--textoverde-petrleo-escuro);
-  display: flex;
-  font-family: "Nunito-ExtraBold", Helvetica;
-  font-size: 21px;
-  font-weight: 800;
-  justify-content: center;
-  letter-spacing: 0;
-  line-height: 24.1px;
-  margin-top: -1px;
-  position: relative;
-  text-align: center;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.element-MAPA-FASES .FASE-3 {
-  align-items: center;
-  background-color: var(--paletacinza-quenteclaro);
-  border-radius: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 104px;
-  justify-content: center;
-  left: 649px;
-  overflow: hidden;
-  padding: 23px 0px;
-  position: absolute;
-  top: 278px;
-  width: 104px;
-}
-
-.element-MAPA-FASES .frame-5 {
-  align-items: center;
-  display: inline-flex;
-  gap: 10px;
-  justify-content: center;
-  left: 655px;
-  padding: 10px;
-  position: absolute;
-  top: 388px;
-}
-
-.element-MAPA-FASES .FASE-4 {
-  align-items: center;
-  background-color: var(--paletacinza-quenteclaro);
-  border-radius: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: 104px;
-  justify-content: center;
-  left: 828px;
-  overflow: hidden;
-  padding: 23px 0px;
-  position: absolute;
-  top: 346px;
-  width: 104px;
-}
-
-.element-MAPA-FASES .frame-6 {
-  align-items: center;
-  display: inline-flex;
-  gap: 10px;
-  justify-content: center;
-  left: 834px;
-  padding: 10px;
-  position: absolute;
-  top: 456px;
-}
-
-.element-MAPA-FASES .group {
-  height: 177px;
-  left: 68px;
-  position: absolute;
-  top: 568px;
-  width: 177px;
-}
-
-.element-MAPA-FASES .FALA-DA-CAPI {
-  align-items: center;
-  background-color: var(--paletaamarelo-manteigamdio);
-  border-radius: 32px;
-  box-shadow: 0px 4px 10px #1e382d21;
-  display: inline-flex;
-  gap: 28px;
-  height: 92px;
-  justify-content: center;
-  left: 264px;
-  overflow: hidden;
-  padding: 24px;
-  position: absolute;
-  top: 609px;
-}
-
-.element-MAPA-FASES .UDIO-INSTRUO {
-  height: 32px;
-  position: relative;
-  width: 32px;
-}
-
-.element-MAPA-FASES .p {
-  align-items: center;
-  color: var(--textoverde-petrleo-escuro);
-  display: flex;
-  font-family: "Nunito-ExtraBold", Helvetica;
-  font-size: 27px;
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 31px;
-  position: relative;
-  white-space: nowrap;
-  width: fit-content;
-}
-
-.element-MAPA-FASES .OUVIR-INSTRUO {
-  height: 64px;
-  left: 8px;
-  position: absolute;
-  top: 18px;
-  width: 64px;
-}
-
 .element-MAPA-FASES .campo-da-trilha-flex {
   align-items: flex-start;
   background-color: var(--paletaverde-slviaclaro);
@@ -423,7 +95,7 @@
   display: flex;
   height: 302px;
   justify-content: space-between;
-  left: 43px;
+  left: 48px;
   padding: 28px 48px;
   position: absolute;
   top: 239px;
@@ -432,10 +104,24 @@
 
 .element-MAPA-FASES .linha-trilha-svg {
   height: 160px;
-  left: 34px;
+  left: 48px;
   pointer-events: none;
   position: absolute;
-  top: 50px;
-  width: 860px;
+  top: 28px;
+  width: 832px;
   z-index: 1;
+}
+
+.element-MAPA-FASES .group {
+  height: 177px;
+  left: 68px;
+  position: absolute;
+  top: 635px;
+  width: 177px;
+}
+
+.element-MAPA-FASES .posicao-balao-mapa {
+  left: 264px;
+  position: absolute;
+  top: 675px;
 }

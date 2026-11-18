@@ -1,3 +1,4 @@
+import cadeado from "../../assets/mapa/cadeado.svg";
 import "./FaseNode.css";
 
 export function FaseNode({ numero, status, onSelecionar }) {
@@ -5,7 +6,7 @@ export function FaseNode({ numero, status, onSelecionar }) {
 
   const rotulos = {
     concluida: "FEITA!",
-    ativa: "SUA VEZ",
+    ativa: "FASE LIBERADA!",
     bloqueada: `FASE ${numero}`,
   };
 
@@ -18,6 +19,11 @@ export function FaseNode({ numero, status, onSelecionar }) {
         onClick={() => clicavel && onSelecionar(numero)}
       >
         <span className="fase-numero">{numero}</span>
+
+        {status === "bloqueada" && (
+          <img className="lock" alt="Fase bloqueada" src={cadeado} />
+        )}
+
         {status === "ativa" && <span className="fase-badge-jogar">JOGAR</span>}
       </button>
 

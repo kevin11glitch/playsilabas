@@ -40,16 +40,16 @@ export function MapaFases({
       <div className="campo-da-trilha-flex">
         <svg
           className="linha-trilha-svg"
-          viewBox="0 0 860 160"
+          viewBox="0 0 832 160"
           fill="none"
-          preserveAspectRatio="none"
         >
           <path
-            d="M 60 120 Q 150 30, 245 55 T 430 120 T 615 55 T 800 120"
+            d="M 52 125 L 234 55 L 416 125 L 598 55 L 780 125"
             stroke="#8FAF9F"
-            strokeWidth="6"
-            strokeDasharray="12 12"
+            strokeWidth="9"
+            strokeDasharray="1 18"
             strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
 
@@ -58,12 +58,14 @@ export function MapaFases({
             key={num}
             numero={num}
             status={obterStatus(num)}
-            onSelecionar={onSelecionarFase}
+            onSelecionar={(numeroFase) => {
+              tocarAudio("04_instrucao_geral");
+              onSelecionarFase(numeroFase);
+            }}
           />
         ))}
       </div>
 
-      {/* Imagem do Mascote clicável */}
       <img
         className="group"
         alt="Mascote"
@@ -72,9 +74,9 @@ export function MapaFases({
         style={{ cursor: "pointer" }}
       />
 
-      {/* Balão de Fala Componentizado */}
+
       <BalaoMascote
-        texto="SÓ 5 FASES. NO SEU TEMPO!"
+        texto="TOQUE NO NUMERO PARA ESCOLHER O SEU DESAFIO!"
         audioArquivo="02_selecao_fase"
         className="posicao-balao-mapa"
       />
