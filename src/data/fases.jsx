@@ -1,0 +1,120 @@
+import imagemBoneca from "../assets/mapa/bonecaDesafio.png";
+import imagemCavalo from "../assets/mapa/cavaloDesafio.png";
+import imagemSapo from "../assets/mapa/sapoDesafio.png";
+import imagemAbacaxi from "../assets/mapa/abacaxiDesafio.png"; 
+
+export const DADOS_FASES = {
+  1: {
+    numero: 1,
+    titulo: "FASE 1 · PRIMEIROS SONS",
+    palavraCompleta: "SAPO",
+    imagem: imagemSapo,
+    audioPalavra: "05_palavra_sapo",
+    silabasFixas: [
+      { silaba: "SA", audio: "06_silaba_sa" },
+    ],
+    posicaoLacuna: 1,
+    silabaCorreta: "PO",
+    opcoes: [
+      { silaba: "PO", audio: "07_silaba_po" },
+      { silaba: "LA", audio: "08_silaba_la" },
+      { silaba: "CO", audio: "09_silaba_co" },
+    ],
+    falaInicial: "QUAL SOM TERMINA A PALAVRA?",
+    audioInicial: "10_dica_wireframe_sapo",
+    falaAcerto: "MUITO BEM! VOCê FORMOU A PALAVRA: SAPO!",
+    audioAcerto: "11_acerto_sapo",
+  },
+  2: {
+    numero: 2,
+    titulo: "FASE 2 · OS SONS",
+    palavraCompleta: "SAPO",
+    imagem: imagemSapo,
+    audioPalavra: "05_palavra_sapo",
+    silabasFixas: [
+      { silaba: "SA", audio: "06_silaba_sa" },
+    ],
+    posicaoLacuna: 1,
+    silabaCorreta: "PO",
+    opcoes: [
+      { silaba: "PO", audio: "07_silaba_po" },
+      { silaba: "LA", audio: "08_silaba_la" },
+      { silaba: "CO", audio: "09_silaba_co" },
+    ],
+    falaInicial: "SA... QUAL SOM TERMINA A PALAVRA?",
+    audioInicial: "10_dica_wireframe_sapo",
+    falaAcerto: "MUITO BEM! VOCÊ FORMOU A PALAVRA: SAPO!",
+    audioAcerto: "11_acerto_sapo",
+  },
+  3: {
+    numero: 3,
+    titulo: "FASE 3 · NOVAS PALAVRAS",
+    palavraCompleta: "CAVALO",
+    imagem: imagemCavalo,
+    audioPalavra: "12_palavra_cavalo",
+    silabasFixas: [
+      { silaba: "CA", audio: "13_silaba_ca" },
+      { silaba: "VA", audio: "14_silaba_va" },
+    ],
+    posicaoLacuna: 2, 
+    silabaCorreta: "LO",
+    opcoes: [
+      { silaba: "LHO", audio: "15_silaba_lho" },
+      { silaba: "LO", audio: "16_silaba_lo" },
+      { silaba: "CO", audio: "17_silaba_co" },
+    ],
+    falaInicial: "CAVA... QUAL SOM TERMINA A PALAVRA?",
+    audioInicial: "18_dica_wireframe_cavalo",
+    falaAcerto: "MUITO BEM! VOCÊ FORMOU A PALAVRA: CAVALO!",
+    audioAcerto: "19_acerto_cavalo",
+    audioErro: "35_erro_generico",
+  },
+  4: {
+    numero: 4,
+    titulo: "FASE 4 · SÍLABA DO MEIO",
+    palavraCompleta: "BONECA",
+    imagem: imagemBoneca,
+    audioPalavra: "20_palavra_boneca",
+    silabasFixas: [
+      { silaba: "BO", audio: "21_silaba_bo" },
+      { silaba: "CA", audio: "23_silaba_ca" },
+    ],
+    posicaoLacuna: 1, 
+    silabaCorreta: "NE",
+    opcoes: [
+      { silaba: "NE", audio: "22_silaba_ne" },
+      { silaba: "TI", audio: "24_silaba_ti" },
+      { silaba: "BO", audio: "21_silaba_bo" },
+    ],
+    falaInicial: "A PALAVRA É: BO...CA.",
+    audioInicial: "20_palavra_boneca",
+    falaAcerto: "MUITO BEM! VOCÊ FORMOU A PALAVRA: BONECA!",
+    audioAcerto: "26_acerto_boneca",
+    audioErro: "25_erro_complexo_boneca",
+    falaErro: "QUASE LÁ! ESSA SÍLABA FAZ UM SOM DIFERENTE. QUE TAL ESCUTAR OS SONS DOS BLOCOS NOVAMENTE?",
+  },
+  5: {
+    numero: 5,
+    titulo: "FASE 5 · DESAFIO FINAL",
+    palavraCompleta: "ABACAXI",
+    imagem: imagemAbacaxi,
+    audioPalavra: "27_palavra_abacaxi",
+    silabasFixas: [
+      { silaba: "A", audio: "28_silaba_a" },
+      { silaba: "XI", audio: "31_silaba_xi" },
+    ],
+    lacunas: [
+      { posicao: 1, silabaCorreta: "BA" },
+      { posicao: 2, silabaCorreta: "CA" },
+    ],
+    opcoes: [
+      { silaba: "BA", audio: "29_silaba_ba" },
+      { silaba: "LO", audio: "32_silaba_lo" },
+      { silaba: "CA", audio: "30_silaba_ca" },
+    ],
+    falaInicial: "QUAIS SONS COMPLETAM A - ? - ? - XI?",
+    audioInicial: "33_dica_abacaxi",
+    falaAcerto: "PARABÉNS! VOCÊ FORMOU A PALAVRA: ABACAXI!",
+    audioAcerto: "34_acerto_abacaxi",
+  },
+};

@@ -6,15 +6,12 @@ import "./MapaFases.css";
 
 const TOTAL_FASES = [1, 2, 3, 4, 5];
 
-export function MapaFases({
-  faseDesbloqueada = 2,
-  onVoltarInicio,
-  onSelecionarFase,
-}) {
-  const obterStatus = (numero) => {
-    if (numero < faseDesbloqueada) return "concluida";
-    if (numero === faseDesbloqueada) return "ativa";
-    return "bloqueada";
+export default function MapaFases({ faseDesbloqueada, onVoltarInicio, onSelecionarFase }
+){
+  const obterStatus = (numeroFase) => {
+    if (numeroFase < faseDesbloqueada) return "concluida"; 
+    if (numeroFase === faseDesbloqueada) return "ativa";    
+    return "bloqueada";                                
   };
 
   return (

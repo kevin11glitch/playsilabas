@@ -1,74 +1,125 @@
 import { useState } from "react";
 import mascote from "../../assets/mapa/mascoteMapa.png";
-import imagemSapo from "../../assets/mapa/sapoDesafio.png";
 import iconeAltoFalante from "../../assets/mapa/speaker.svg";
 import { BalaoMascote } from "../../components/BalaoMascote/BalaoMascote";
 import { BlocoSilaba } from "../../components/BlocoSilaba/BlocoSilaba";
-import { tocarAudio } from "../../utils/audioPlayer";
+import { tocarAudio, tocarSequenciaAudios } from "../../utils/audioPlayer";
 import "./TelaDesafio.css";
 
-const OPCOES_SAPO = [
-  { silaba: "PO", audio: "07_silaba_po" },
-  { silaba: "LA", audio: "09_silaba_la" },
-  { silaba: "CO", audio: "08_silaba_co" },
-];
-
-export default function TelaDesafio({ onVoltarMapa, onConcluirFase }) {
+export default function TelaDesafio({ dadosFase, onVoltarMapa, onConcluirFase }) {
   const [silabaSelecionada, setSilabaSelecionada] = useState(null);
-  const [silabaEncaixada, setSilabaEncaixada] = useState(null);
+  const [silabasEncaixadas, setSilabasEncaixadas] = useState({});
   const [silabaErrada, setSilabaErrada] = useState(null);
   const [falaMascote, setFalaMascote] = useState({
-    texto: "SA... QUAL SOM TERMINA A PALAVRA?",
-    audio: "11_dica_wireframe_sapo",
+    texto: dadosFase.falaInicial,
+    audio: dadosFase.audioInicial,
     variante: "padrao",
   });
 
-  const verificarResposta = (silabaParaTestar) => {
-    if (silabaEncaixada || !silabaParaTestar) return;
+  const audioErroAtual = dadosFase.audioErro || "35_erro_generico";
+  const falaErroAtual = dadosFase.falaErro || "QUASE LÁ! VAMOS OUVIR O SOM DO COMECINHO DE NOVO?";
 
-    if (silabaParaTestar === "PO") {
-      setSilabaEncaixada("PO");
+  const listaLacunas = dadosFase.lacunas || [
+    {
+      posicao: dadosFase.posicaoLacuna ?? dadosFase.silabasFixas.length,
+      silabaCorreta: dadosFase.silabaCorreta,
+    },
+  ];
+
+  const faseConcluida = listaLacunas.every(
+    (lacuna) => silabasEncaixadas[lacuna.posicao] === lacuna.silabaCorreta
+  );
+
+  const verificarResposta = (silabaParaTestar, posicaoAlvo) => {
+    if (faseConcluida || !silabaParaTestar || silabasEncaixadas[posicaoAlvo]) return;
+
+    const lacunaConfig = listaLacunas.find((l) => l.posicao === posicaoAlvo);
+    if (!lacunaConfig) return;
+
+    if (silabaParaTestar === lacunaConfig.silabaCorreta) {
+      const novasEncaixadas = {
+        ...silabasEncaixadas,
+        [posicaoAlvo]: silabaParaTestar,
+      };
+      setSilabasEncaixadas(novasEncaixadas);
       setSilabaSelecionada(null);
-      setFalaMascote({
-        texto: "MUITO BEM! SA-PO... SAPO!",
-        audio: "18_acerto_sapo",
-        variante: "sucesso",
-      });
-      setTimeout(() => {
-        tocarAudio("18_acerto_sapo");
-      }, 450);
+
+      // Verifica se todas as lacunas da palavra já foram preenchidas
+      const completouTudo = listaLacunas.every(
+        (l) => novasEncaixadas[l.posicao] === l.silabaCorreta
+      );
+
+      if (completouTudo) {
+        setFalaMascote({
+          texto: dadosFase.falaAcerto,
+          audio: dadosFase.audioAcerto,
+          variante: "sucesso",
+        });
+        setTimeout(() => {
+          tocarAudio(dadosFase.audioAcerto);
+        }, 450);
+      } else {
+        setFalaMascote({
+          texto: "ISSO MESMO! AGORA COMPLETE O OUTRO ESPAÇO!",
+          audio: dadosFase.audioInicial,
+          variante: "sucesso",
+        });
+      }
     } else {
       setSilabaErrada(silabaParaTestar);
       setSilabaSelecionada(null);
       setFalaMascote({
-        texto: "QUASE LÁ! VAMOS OUVIR O SOM DO COMECINHO DE NOVO?",
-        audio: "16_erro_generico",
+        texto: falaErroAtual,
+        audio: audioErroAtual,
         variante: "dica",
       });
       setTimeout(() => {
         setSilabaErrada(null);
-        tocarAudio("16_erro_generico");
+        tocarAudio(audioErroAtual);
       }, 500);
     }
+
   };
 
-  // Quando clica na caixa tracejada (?)
-  const handleClicarCaixaDestino = () => {
+  const handleClicarCaixaDestino = (posicaoAlvo) => {
     if (silabaSelecionada) {
-      verificarResposta(silabaSelecionada);
-    } else if (!silabaEncaixada) {
-      // Se clicar na caixa vazia sem ter escolhido um bloco antes, dá a dica sonora
-      tocarAudio("11_dica_wireframe_sapo");
+      verificarResposta(silabaSelecionada, posicaoAlvo);
+    } else if (!silabasEncaixadas[posicaoAlvo]) {
+      tocarAudio(dadosFase.audioInicial);
     }
   };
 
-  // Quando arrasta e solta na caixa tracejada (?)
-  const handleDrop = (e) => {
+  const handleDrop = (e, posicaoAlvo) => {
     e.preventDefault();
     const silabaArrastada = e.dataTransfer.getData("text/plain");
     if (silabaArrastada) {
-      verificarResposta(silabaArrastada);
+      verificarResposta(silabaArrastada, posicaoAlvo);
     }
+  };
+
+  // Monta a sequência intercalando sílabas fixas e lacunas nas posições exatas
+  const totalSlots = dadosFase.silabasFixas.length + listaLacunas.length;
+  const itensLinhaMontagem = [];
+  let indiceFixa = 0;
+
+  for (let pos = 0; pos < totalSlots; pos++) {
+    const lacuna = listaLacunas.find((l) => l.posicao === pos);
+    if (lacuna) {
+      itensLinhaMontagem.push({ tipo: "lacuna", ...lacuna });
+    } else {
+      itensLinhaMontagem.push({
+        tipo: "fixa",
+        ...dadosFase.silabasFixas[indiceFixa],
+      });
+      indiceFixa++;
+    }
+  }
+
+  const handleBotaoAvancar = () => {
+    if (dadosFase.numero === 5) {
+      tocarSequenciaAudios(["37_conclusao_trilha", "38_stopping"]);
+    }
+    onConcluirFase();
   };
 
   return (
@@ -83,16 +134,19 @@ export default function TelaDesafio({ onVoltarMapa, onConcluirFase }) {
       </button>
 
       <div className="frame-6">
-        <p className="p">FASE 2 · OS SONS</p>
+        <p className="p">{dadosFase.titulo}</p>
       </div>
 
-      {/* Card da Ilustração + Ouvir Palavra */}
       <div className="frame">
-        <img className="group" alt="Ilustração Sapo" src={imagemSapo} />
+        <img
+          className="group"
+          alt={dadosFase.palavraCompleta}
+          src={dadosFase.imagem}
+        />
         <button
           type="button"
           className="OUVIR-PALAVRA"
-          onClick={() => tocarAudio("05_palavra_sapo")}
+          onClick={() => tocarAudio(dadosFase.audioPalavra)}
           style={{ border: "none", cursor: "pointer" }}
         >
           <img className="ALTO-FALANTE" alt="" src={iconeAltoFalante} />
@@ -104,30 +158,51 @@ export default function TelaDesafio({ onVoltarMapa, onConcluirFase }) {
         <div className="div">COMPLETE A PALAVRA</div>
       </div>
 
-      {/* Sílaba Inicial Fixa (SA) */}
-      <div className="SLABA-INICIAL-SA-wrapper">
-        <BlocoSilaba silaba="SA" audioArquivo="06_silaba_sa" variante="fixa" />
-      </div>
-
-      {/* Espaço de Destino (Aceita clique após selecionar OU Drop) */}
       <div
-        className={`ESPAO-DA-SLABA-FINAL ${
-          silabaSelecionada && !silabaEncaixada ? "pronta-para-encaixe" : ""
-        }`}
-        onClick={handleClicarCaixaDestino}
-        onDragOver={(e) => e.preventDefault()}
-        onDrop={handleDrop}
-        style={{ cursor: silabaEncaixada ? "default" : "pointer" }}
+        className={`linha-montagem-palavra ${totalSlots === 4 ? "quatro-silabas" : ""
+          }`}
       >
-        {silabaEncaixada ? (
-          <BlocoSilaba
-            silaba={silabaEncaixada}
-            audioArquivo="07_silaba_po"
-            variante="encaixada"
-          />
-        ) : (
-          <div className="text-wrapper-3">?</div>
-        )}
+        {itensLinhaMontagem.map((item, index) => {
+          if (item.tipo === "lacuna") {
+            const silabaJaPreenchida = silabasEncaixadas[item.posicao];
+            const opcaoObj = dadosFase.opcoes.find(
+              (op) => op.silaba === silabaJaPreenchida
+            );
+
+            return (
+              <div
+                key={`lacuna-${item.posicao}`}
+                className={`ESPAO-DA-SLABA-FINAL ${silabaSelecionada && !silabaJaPreenchida
+                  ? "pronta-para-encaixe"
+                  : ""
+                  }`}
+                onClick={() => handleClicarCaixaDestino(item.posicao)}
+                onDragOver={(e) => e.preventDefault()}
+                onDrop={(e) => handleDrop(e, item.posicao)}
+                style={{ cursor: silabaJaPreenchida ? "default" : "pointer" }}
+              >
+                {silabaJaPreenchida ? (
+                  <BlocoSilaba
+                    silaba={silabaJaPreenchida}
+                    audioArquivo={opcaoObj?.audio}
+                    variante="encaixada"
+                  />
+                ) : (
+                  <div className="text-wrapper-3">?</div>
+                )}
+              </div>
+            );
+          }
+
+          return (
+            <BlocoSilaba
+              key={`${item.silaba}-${index}`}
+              silaba={item.silaba}
+              audioArquivo={item.audio}
+              variante="fixa"
+            />
+          );
+        })}
       </div>
 
       <div className="text-wrapper-4">
@@ -136,19 +211,23 @@ export default function TelaDesafio({ onVoltarMapa, onConcluirFase }) {
           : "TOQUE OU ARRASTE"}
       </div>
 
-      {/* Bandeja de Sílabas */}
       <div className="bandeja-de-slabas">
-        {OPCOES_SAPO.map((item) => (
-          <BlocoSilaba
-            key={item.silaba}
-            silaba={item.silaba}
-            audioArquivo={item.audio}
-            variante="opcao"
-            selecionado={silabaSelecionada === item.silaba}
-            errado={silabaErrada === item.silaba}
-            aoSelecionar={(silaba) => setSilabaSelecionada(silaba)}
-          />
-        ))}
+        {dadosFase.opcoes.map((item) => {
+          const jaUsada = Object.values(silabasEncaixadas).includes(item.silaba);
+          return (
+            <BlocoSilaba
+              key={item.silaba}
+              silaba={item.silaba}
+              audioArquivo={item.audio}
+              variante="opcao"
+              selecionado={silabaSelecionada === item.silaba}
+              errado={silabaErrada === item.silaba}
+              aoSelecionar={(silaba) => {
+                if (!jaUsada) setSilabaSelecionada(silaba);
+              }}
+            />
+          );
+        })}
       </div>
 
       <img
@@ -165,16 +244,18 @@ export default function TelaDesafio({ onVoltarMapa, onConcluirFase }) {
         variante={falaMascote.variante}
         className="posicao-balao-desafio"
       />
-
-      {silabaEncaixada && (
+      {faseConcluida && (
         <button
           type="button"
           className="botao-avancar-fase"
-          onClick={onConcluirFase}
+          onClick={handleBotaoAvancar}
         >
-          PRÓXIMA FASE ›
+          {dadosFase.numero === 5 ? "CONCLUIR TRILHA ›" : "PRÓXIMA FASE ›"}
         </button>
       )}
+
+
+
     </div>
   );
 }

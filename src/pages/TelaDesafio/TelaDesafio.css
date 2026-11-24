@@ -381,6 +381,36 @@
   top: 675px;
 }
 
+/* Empurra o título um pouco para a esquerda e reduz levemente a fonte */
+.element-DESAFIO-SAPO .frame-6 {
+  left: 230px !important;
+}
+
+.element-DESAFIO-SAPO .frame-6 .p {
+  font-size: 28px !important;
+}
+
+/* Alinha o botão Próxima Fase simetricamente à margem direita (48px) */
+.element-DESAFIO-SAPO .botao-avancar-fase {
+  left: auto !important;
+  right: 48px !important;
+}
+.element-DESAFIO-SAPO .linha-montagem-palavra.quatro-silabas {
+  gap: 10px !important;
+}
+
+.element-DESAFIO-SAPO .linha-montagem-palavra.quatro-silabas .bloco-silaba.fixa,
+.element-DESAFIO-SAPO .linha-montagem-palavra.quatro-silabas .bloco-silaba.encaixada,
+.element-DESAFIO-SAPO .linha-montagem-palavra.quatro-silabas .ESPAO-DA-SLABA-FINAL {
+  height: 112px !important;
+  width: 112px !important;
+}
+
+.element-DESAFIO-SAPO .linha-montagem-palavra.quatro-silabas .bloco-silaba-texto,
+.element-DESAFIO-SAPO .linha-montagem-palavra.quatro-silabas .text-wrapper-3 {
+  font-size: 38px !important;
+}
+
 /* Botão de avançar quando acerta a palavra */
 .element-DESAFIO-SAPO .botao-avancar-fase {
   align-items: center;
@@ -403,6 +433,21 @@
   transition: transform 0.15s ease;
 }
 
+.element-DESAFIO-SAPO .linha-montagem-palavra {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  left: 484px; 
+  position: absolute;
+  top: 256px;  
+}
+
+.element-DESAFIO-SAPO .linha-montagem-palavra .ESPAO-DA-SLABA-FINAL {
+  left: auto;
+  position: relative;
+  top: auto;
+}
+
 .element-DESAFIO-SAPO .botao-avancar-fase:hover {
   transform: scale(1.04);
 }
@@ -412,4 +457,11 @@
   border: 3px dashed var(--textoverde-petrleo-escuro);
   transform: scale(1.04);
   transition: all 0.2s ease;
+}
+
+.element-DESAFIO-SAPO .linha-montagem-palavra.tres-silabas .bloco-silaba.fixa,
+.element-DESAFIO-SAPO .linha-montagem-palavra.tres-silabas .bloco-silaba.encaixada,
+.element-DESAFIO-SAPO .linha-montagem-palavra.tres-silabas .ESPAO-DA-SLABA-FINAL {
+  height: 132px;
+  width: 132px;
 }

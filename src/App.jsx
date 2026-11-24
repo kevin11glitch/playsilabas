@@ -1,40 +1,48 @@
 import { useState } from "react";
+import { DADOS_FASES } from "./data/fases";
+import MapaFases from "./pages/MapaFases/MapaFases";
+import TelaDesafio from "./pages/TelaDesafio/TelaDesafio";
 import TelaInicial from "./pages/TelaInicial/TelaInicial";
-import { MapaFases } from "./pages/MapaFases/MapaFases.jsx";
-import TelaDesafio from "./pages/TelaDesafio/TelaDesafio.jsx";
-export function App() {
-  const [telaAtual, setTelaAtual] = useState("inicio");
+
+export default function App() {
+  const [telaAtual, setTelaAtual] = useState("inicial");
+  const [faseDesbloqueada, setFaseDesbloqueada] = useState(2); 
   const [faseSelecionada, setFaseSelecionada] = useState(2);
 
-  const abrirDesafio = (numeroFase) => {
+  const handleSelecionarFase = (numeroFase) => {
+    if (numeroFase > faseDesbloqueada) return;
+
     setFaseSelecionada(numeroFase);
     setTelaAtual("desafio");
   };
 
+  const handleConcluirFase = () => {
+    setFaseDesbloqueada((prev) => Math.max(prev, faseSelecionada + 1));
+    setTelaAtual("mapa");
+  };
+
   return (
-    <main>
-      {telaAtual === "inicio" && (
+    <>
+      {telaAtual === "inicial" && (
         <TelaInicial onIniciarJogo={() => setTelaAtual("mapa")} />
       )}
 
       {telaAtual === "mapa" && (
         <MapaFases
-          onVoltarInicio={() => setTelaAtual("inicio")}
-          onSelecionarFase={abrirDesafio}
+          faseDesbloqueada={faseDesbloqueada}
+          onVoltarInicio={() => setTelaAtual("inicial")}
+          onSelecionarFase={handleSelecionarFase}
         />
       )}
 
       {telaAtual === "desafio" && (
-        <div>
-          {/* Aqui entrará a TelaDesafio (Fase {faseSelecionada}) */}
-          <TelaDesafio 
-            onVoltarMapa={()=> setTelaAtual("mapa")}
-          />
-        </div>
-        
+        <TelaDesafio
+          key={faseSelecionada} 
+          dadosFase={DADOS_FASES[faseSelecionada] || DADOS_FASES[2]}
+          onVoltarMapa={() => setTelaAtual("mapa")}
+          onConcluirFase={handleConcluirFase}
+        />
       )}
-    </main>
+    </>
   );
 }
-
-export default App;
